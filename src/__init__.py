@@ -1,13 +1,18 @@
-from hiwonder import motor as __motor
-from hiwonder import adc as __adc
 from hiwonder import pwm_servo as __pwm_servo
-from hiwonder import misc
-from hiwonder import serial_servo
-from hiwonder import kinematic
-from hiwonder import stepper
-from hiwonder.pid import PID
+from hiwonder import motor as __motor
 from hiwonder.motor import EncoderMotorController
-from hiwonder.colors import colors
+from hiwonder import misc
+from hiwonder import adc as __adc
+from hiwonder.pid import PID
+from hiwonder.colors import colors as COLORS
+from hiwonder.colors import colors_bgr as COLORS_BGR
+from hiwonder import serial_servo
+from hiwonder import stepper
+from hiwonder.stepper import Stepper
+from hiwonder import kinematic
+from hiwonder import jetmax
+from hiwonder.jetmax import JetMax
+from hiwonder.jetmax import Sucker
 
 Kinematic = kinematic
 
