@@ -1,7 +1,4 @@
-import sys
-import time
 import smbus2
-import threading
 from . import const
 
 ADC1_ADDRESS = 0
@@ -28,6 +25,6 @@ class ADC:
             value[0] = bus.read_byte(const.MCU_ADDRESS)
             value[1] = bus.read_byte(const.MCU_ADDRESS)
         if self.address == BAT_ADDRESS:
-            return (value[0] + (value[1] << 8))*3
+            return (value[0] + (value[1] << 8)) * 3
         else:
-            return (value[0] + (value[1] << 8))
+            return value[0] + (value[1] << 8)

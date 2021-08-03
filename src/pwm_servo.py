@@ -5,6 +5,7 @@ from . import const
 
 SERVO_ADDRESS = 21
 
+
 class PWMServo:
     def __init__(self,
                  i2c_port,
@@ -90,4 +91,3 @@ class PWMServo:
         :return:
         """
         return self.deviation
-
