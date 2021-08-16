@@ -13,6 +13,8 @@ from hiwonder import kinematic
 from hiwonder import jetmax
 from hiwonder.jetmax import JetMax
 from hiwonder.jetmax import Sucker
+from hiwonder import mecanum
+from hiwonder.mecanum import MecanumChassis
 
 Kinematic = kinematic
 
