@@ -3,7 +3,7 @@ import smbus2
 import threading
 from . import const
 
-SERVO_ADDRESS = 21
+SERVO_ADDRESS = 20
 
 
 class PWMServo:
@@ -12,14 +12,14 @@ class PWMServo:
                  servo_id,
                  min_position=0,
                  max_position=180,
-                 min_duration=20,
-                 max_duration=30000,
+                 min_duration=0.02,
+                 max_duration=30,
                  deviation=0):
         self.i2c_port = i2c_port
-        if servo_id > 4 or servo_id < 1:
+        if servo_id > 2 or servo_id < 1:
             raise ValueError('invalid servo id {}'.format(servo_id))
-        self.servo_id = 5 - servo_id
-        self.address = self.servo_id - 1 + SERVO_ADDRESS
+        self.servo_id = servo_id
+        self.address = self.servo_id + SERVO_ADDRESS
         self.min_position = min_position
         self.max_position = max_position
         self.min_duration = min_duration
@@ -50,7 +50,7 @@ class PWMServo:
         new_pos = int(new_pos)
         duration = self.min_duration if duration < self.min_duration else duration
         duration = self.max_duration if duration > self.max_duration else duration
-        duration = int(duration)
+        duration = int(duration * 1000)
         inc_times = int(duration / 20 + 0.5)
         with self.lock:
             self.inc_times = inc_times

@@ -34,7 +34,11 @@ class EncoderMotorController:
 
     def set_speed(self, speed, motor_id=None, offset=0):
         with smbus2.SMBus(self.i2c_port) as bus:
+            # motor speed  control register address is 51 + motor_id - 1
             if motor_id is None:
                 bus.write_i2c_block_data(ENCODER_MOTOR_MODULE_ADDRESS, 51 + offset, speed)
             else:
-                bus.write_i2c_block_data(ENCODER_MOTOR_MODULE_ADDRESS, 51 + motor_id - 1, [speed, ])
+                if 0 < motor_id < 4:
+                    bus.write_i2c_block_data(ENCODER_MOTOR_MODULE_ADDRESS, 50 + motor_id, [speed, ])
+                else:
+                    raise ValueError("Invalid motor id")

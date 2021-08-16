@@ -15,16 +15,19 @@ from hiwonder.jetmax import JetMax
 from hiwonder.jetmax import Sucker
 from hiwonder import mecanum
 from hiwonder.mecanum import MecanumChassis
+from hiwonder import buzzer
 
 Kinematic = kinematic
 
 motor1 = __motor.Motor(1, 1)
+motor1.set_speed(0)
 motor2 = __motor.Motor(1, 2)
+motor2.set_speed(0)
+motor3 = __motor.Motor(1, 3)
+motor3.set_speed(0)
 
 pwm_servo1 = __pwm_servo.PWMServo(1, 1)
 pwm_servo2 = __pwm_servo.PWMServo(1, 2)
-pwm_servo3 = __pwm_servo.PWMServo(1, 3)
-pwm_servo4 = __pwm_servo.PWMServo(1, 4)
 
 battery = __adc.ADC(1, 0)
 adc1 = __adc.ADC(1, 1)
